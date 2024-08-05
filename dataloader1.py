@@ -55,7 +55,7 @@ class CIFAKEDataset(Dataset):
         return x, y
         
     def __init__(self, category=None, transform=None, num_processes=1):
-        label_1_folders = [
+        label_0_folders = [
             "outputJPG/SD21Airplane",
             "outputJPG/SD21Automobile",
             "outputJPG/SD21Bird",
@@ -67,17 +67,17 @@ class CIFAKEDataset(Dataset):
             "outputJPG/SD21Ship",
             "outputJPG/SD21Truck" 
         ]
-        label_0_folders = [
+        label_1_folders = [
             "CIFAKE/test/REAL",
             "CIFAKE/train/REAL"
         ]
-        x1, y1 = CIFAKEDataset.load_folder(label_0_folders[0], 1, category, transform, num_processes)
-        x2, y2 = CIFAKEDataset.load_folder(label_0_folders[1], 1, category, transform, num_processes)
+        x1, y1 = CIFAKEDataset.load_folder(label_1_folders[0], 1, category, transform, num_processes)
+        x2, y2 = CIFAKEDataset.load_folder(label_1_folders[1], 1, category, transform, num_processes)
 
         xList = [0]*10
         yList = [0]*10
         for i in range(10):
-            xi, yi = CIFAKEDataset.load_folder(label_1_folders[i], 0, category, transform, num_processes)
+            xi, yi = CIFAKEDataset.load_folder(label_0_folders[i], 0, category, transform, num_processes)
             xList[i] = xi
             yList[i] = yi
 
